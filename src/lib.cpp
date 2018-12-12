@@ -92,6 +92,7 @@ void LibManager::addLib(const std::string & libname)
     LibPtr libPtr = std::make_shared<Lib>(libname);
     libPtr->init();
     libs_[libname] = libPtr;
+    depsTable_[libname];
 }
 void LibManager::addSymbol(std::string const& symbol, LibPtr const& libPtr)
 {
@@ -148,7 +149,7 @@ void LibManager::dumpLinkArgs()
 
 retry:
     for (auto & lib : outSet) {
-        if (depsTable.count(lib) || depsTable[lib].empty()) {
+        if (!depsTable.count(lib) || depsTable[lib].empty()) {
             printf("%s ", lib.c_str());
             outSet.erase(lib);
 

@@ -17,6 +17,7 @@ endif()
 
 message("------------ Options -------------")
 message("  CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+message("  CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
 message("  CMAKE_COMMAND: ${CMAKE_COMMAND}")
 
 set(CMAKE_CXX_FLAGS -std=c++11)
@@ -34,3 +35,5 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 # target
 target_link_libraries(${TARGET} -pthread -ldl)
+
+install(TARGETS ${TARGET} RUNTIME DESTINATION "bin" ARCHIVE DESTINATION "bin")
